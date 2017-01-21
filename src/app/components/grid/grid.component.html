@@ -10,9 +10,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let object of data">
-            <td *ngFor="let cell of cells">
-              {{object[cell.value]}}
+          <tr *ngFor="let object of data" [ngClass]="{'selected-row': selectedRow === object}">
+            <td *ngFor="let cell of cells" (click)="setSelectedRow(object)">
+              {{validateValue(object[cell.value], cell.type)}}
             </td>
           </tr>
         </tbody>

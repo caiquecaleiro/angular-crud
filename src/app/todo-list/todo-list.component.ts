@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../shared/services/todo-service';
 import { Todo } from '../shared/interfaces/todo';
 import { Cell } from '../shared/interfaces/cell';
+import { ColumnType } from '../shared/enum/columnType';
 
 @Component({
   selector: 'app-todo-list',
@@ -12,6 +13,7 @@ import { Cell } from '../shared/interfaces/cell';
 export class TodoListComponent implements OnInit {
   todos: Todo[] = [];
   gridCells: Array<Cell> = [];
+  selectedRow: Object = {};
 
   constructor(private todoService: TodoService) { }
 
@@ -22,9 +24,9 @@ export class TodoListComponent implements OnInit {
 
   setGridCells() {
     this.gridCells = [
-      { name: 'Text', value: 'text', type: 'string' },
-      { name: 'Completed', value: 'completed', type: 'boolean' },
-      { name: 'Completed at', value: 'completedAt', type: 'timestamp' }
+      { name: 'Text', value: 'text', type: ColumnType.STRING },
+      { name: 'Completed', value: 'completed', type: ColumnType.BOOLEAN },
+      { name: 'Completed at', value: 'completedAt', type: ColumnType.TIMESTAMP }
     ]
   }
 
@@ -34,6 +36,11 @@ export class TodoListComponent implements OnInit {
         todos => this.todos = todos,
         error => console.log(error)
       );
+  }
+
+  onRowSelect(object) {
+    console.log(object);
+    this.selectedRow = object;
   }
 
 }
