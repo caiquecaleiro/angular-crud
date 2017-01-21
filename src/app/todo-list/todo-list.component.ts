@@ -43,4 +43,15 @@ export class TodoListComponent implements OnInit {
     this.selectedRow = object;
   }
 
+  onNew() {
+    console.log('new');
+  }
+
+  onEdit() {
+    console.log('edit');
+  }
+
+  onDelete() {
+    console.log('delete');
+  }
 }

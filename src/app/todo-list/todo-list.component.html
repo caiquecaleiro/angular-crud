@@ -6,5 +6,10 @@
       [selectedRow]="selectedRow"
       (onRowSelect)="onRowSelect($event)">
     </app-grid>
+    <app-crud-buttons
+      (onNew)="onNew($event)"
+      (onEdit)="onEdit($event)"
+      (onDelete)="onDelete($event)">
+    </app-crud-buttons>
   </app-portlet>
 </app-page-container>

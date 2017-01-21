@@ -10,6 +10,7 @@ import { routing } from './app.routing';
 import { PortletComponent } from './components/portlet/portlet.component';
 import { PageContainerComponent } from './components/page-container/page-container.component';
 import { TodoService } from './shared/services/todo-service';
+import { CrudButtonsComponent } from './components/crud-buttons/crud-buttons.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TodoService } from './shared/services/todo-service';
     TodoListComponent,
     GridComponent,
     PortletComponent,
-    PageContainerComponent
+    PageContainerComponent,
+    CrudButtonsComponent
   ],
   imports: [
     BrowserModule,
