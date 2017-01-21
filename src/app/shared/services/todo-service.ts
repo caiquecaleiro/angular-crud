@@ -16,4 +16,16 @@ export class TodoService {
       .map((response: Response) => response.json().todos)
       .catch((error: any) => Observable.throw(error.json().error));
   }
+
+  deleteTodo(todo: Todo) : Observable<Response> {
+    return this.http.delete(`${this.API_URL}/todos/${todo._id}`)
+      .map((response: Response) => response.json())
+      .catch((error: any) => Observable.throw(error.json().error));
+  }
+
+  updateTodo(todo: Todo) : Observable<Response> {
+    return this.http.patch(`${this.API_URL}/todos/${todo._id}`, todo)
+      .map((response: Response) => response.json())
+      .catch((error: any) => Observable.throw(error.json().error));
+  }
 }

@@ -13,7 +13,7 @@ import { ColumnType } from '../shared/enum/columnType';
 export class TodoListComponent implements OnInit {
   todos: Todo[] = [];
   gridCells: Array<Cell> = [];
-  selectedRow: Object = {};
+  selectedRow: Todo;
 
   constructor(private todoService: TodoService) { }
 
@@ -52,6 +52,13 @@ export class TodoListComponent implements OnInit {
   }
 
   onDelete() {
-    console.log('delete');
+    this.todoService.deleteTodo(this.selectedRow)
+      .subscribe(
+        todo => {
+          console.log('Deleted todo:', todo)
+          this.loadTodos();
+        },
+        error => console.log(error)
+      );
   }
 }
