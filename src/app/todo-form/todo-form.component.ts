@@ -54,13 +54,13 @@ export class TodoFormComponent implements OnInit, OnDestroy {
       this.todoService.updateTodo(this.id, todo)
         .subscribe(
           todo => this.router.navigate(['/']),
-          error => console.log(error)
+          error => this.error = error
         );
     } else {
       this.todoService.createTodo(todo)
         .subscribe(
           todo => this.router.navigate(['/']),
-          error => console.log(error)
+          error => this.error = error
         );
     }
   }

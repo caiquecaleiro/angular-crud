@@ -14,6 +14,7 @@ export class TodoListComponent implements OnInit {
   todos: Todo[] = [];
   gridCells: Array<Cell> = [];
   selectedRow: Todo;
+  error: string;
 
   constructor(
     private todoService: TodoService,
@@ -37,7 +38,7 @@ export class TodoListComponent implements OnInit {
     this.todoService.fetchTodos()
       .subscribe(
         todos => this.todos = todos,
-        error => console.log(error)
+        error => this.error = error
       );
   }
 
@@ -61,7 +62,7 @@ export class TodoListComponent implements OnInit {
           this.selectedRow = null;
           this.loadTodos();
         },
-        error => console.log(error)
+        error => this.error = error
       );
   }
 }

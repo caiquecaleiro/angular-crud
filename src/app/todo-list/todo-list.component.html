@@ -13,5 +13,10 @@
       [editDisabled]="!selectedRow || !selectedRow._id"
       [deleteDisabled]="!selectedRow || !selectedRow._id">
     </app-crud-buttons>
+    <div *ngIf="error" class="margin-top-25px">
+      <ngb-alert type="danger">
+        <strong>Oops!</strong> {{error}}
+      </ngb-alert>
+    </div>        
   </app-portlet>
 </app-page-container>
