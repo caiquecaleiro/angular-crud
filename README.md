@@ -1,31 +1,29 @@
-# AngularCrud
+# Angular Crud
+An Angular 2 app with CRUD functions. 
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.25.5.
+This app needs to run the server to fetch the data from the MongoDB. Please check [this repository](https://github.com/caiquecaleiro/node-todo-api)
+to run the server.
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## The application
 
-## Code scaffolding
+![The app gif animation](https://raw.githubusercontent.com/caiquecaleiro/angular-crud/readme/src/assets/app.gif)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+## React + Redux version
+Check [this repository](https://github.com/caiquecaleiro/react-crud) if you want to see this app in React.
 
-## Build
+## Installation and usage
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Install the app dependencies:
+```bash
+$ npm install
+```
+Start the application:
+```bash
+$ npm start
+```
 
-## Running unit tests
+## Contributors  
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+**@author:** 'Caique Caleiro *< [caiquecaleiro@gmail.com](mailto:caiquecaleiro@gmail.com) >*' 
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Deploying to GitHub Pages
-
-Run `ng github-pages:deploy` to deploy to GitHub Pages.
-
-## Further help
-
-To get more help on the `angular-cli` use `ng help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
