@@ -9,7 +9,9 @@
     <app-crud-buttons
       (onNew)="onNew($event)"
       (onEdit)="onEdit($event)"
-      (onDelete)="onDelete($event)">
+      (onDelete)="onDelete($event)"
+      [editDisabled]="!selectedRow || !selectedRow._id"
+      [deleteDisabled]="!selectedRow || !selectedRow._id">
     </app-crud-buttons>
   </app-portlet>
 </app-page-container>

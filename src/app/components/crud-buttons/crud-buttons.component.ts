@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-crud-buttons',
@@ -8,6 +8,9 @@ export class CrudButtonsComponent {
   @Output() onNew = new EventEmitter();
   @Output() onEdit = new EventEmitter();
   @Output() onDelete = new EventEmitter();
+  @Input() newDisabled: boolean = false;
+  @Input() editDisabled: boolean = false;
+  @Input() deleteDisabled: boolean = false;
 
   onNewClick() {
     this.onNew.emit();

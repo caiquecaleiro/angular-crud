@@ -1,5 +1,5 @@
 <div>
-  <button class="btn btn-primary" (click)="onNewClick()">New</button> 
-  <button class="btn btn-success" (click)="onEditClick()">Edit</button> 
-  <button class="btn btn-danger" (click)="onDeleteClick()">Delete</button> 
+  <button class="btn btn-primary" (click)="onNewClick()" [disabled]="newDisabled">New</button> 
+  <button class="btn btn-success" (click)="onEditClick()" [disabled]="editDisabled">Edit</button> 
+  <button class="btn btn-danger" (click)="onDeleteClick()" [disabled]="deleteDisabled">Delete</button> 
 </div>
