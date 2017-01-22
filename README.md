@@ -6,7 +6,7 @@ to run the server.
 
 ## The application
 
-![The app gif animation](https://raw.githubusercontent.com/caiquecaleiro/angular-crud/readme/src/assets/img/app.gif)
+![The app gif animation](https://raw.githubusercontent.com/caiquecaleiro/angular-crud/master/src/assets/img/app.gif)
 
 ## React + Redux version
 Check [this repository](https://github.com/caiquecaleiro/react-crud) if you want to see this app in React.
