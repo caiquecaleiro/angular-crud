@@ -28,4 +28,10 @@ export class TodoService {
       .map((response: Response) => response.json())
       .catch((error: any) => Observable.throw(error.json().error));
   }
+
+  createTodo(todo: Todo) : Observable<Response> {
+    return this.http.post(`${this.API_URL}/todos`, todo)
+      .map((response: Response) => response.json())
+      .catch((error: any) => Observable.throw(error.json().error));
+  }
 }
