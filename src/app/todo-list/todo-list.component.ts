@@ -58,7 +58,7 @@ export class TodoListComponent implements OnInit {
     this.todoService.deleteTodo(this.selectedRow)
       .subscribe(
         todo => {
-          console.log('Deleted todo:', todo)
+          this.selectedRow = null;
           this.loadTodos();
         },
         error => console.log(error)
