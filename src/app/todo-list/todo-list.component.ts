@@ -51,7 +51,7 @@ export class TodoListComponent implements OnInit {
   }
 
   onEdit() {
-    console.log('edit');
+    this.router.navigate(['/todo', this.selectedRow._id]);
   }
 
   onDelete() {

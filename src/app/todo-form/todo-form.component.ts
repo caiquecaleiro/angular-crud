@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs/Rx';
 
 import { TodoService } from '../shared/services/todo-service';
 import { Todo } from '../shared/interfaces/todo';
@@ -9,26 +10,58 @@ import { Todo } from '../shared/interfaces/todo';
   selector: 'app-todo-form',
   templateUrl: './todo-form.component.html'
 })
-export class TodoFormComponent implements OnInit {
+export class TodoFormComponent implements OnInit, OnDestroy {
   todoForm: FormGroup;
-  editMode: boolean = false;
+  private editMode: boolean = false;
+  private id: number = null;
+  private subscription: Subscription;
 
   constructor(
     private formBuilder: FormBuilder,
     private todoService: TodoService,
-    private router : Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.initForm();
+    this.subscription = this.activatedRoute.params.subscribe(
+      (params: any) => {
+        if (params.hasOwnProperty('id')) {
+          this.editMode = true;
+          this.id = params['id'];
+          
+          this.todoService.fetchTodo(this.id)
+            .subscribe(
+              todo => {
+                (<FormControl>this.todoForm.controls['text']).setValue(todo.text);
+                (<FormControl>this.todoForm.controls['completed']).setValue(todo.completed);
+              },
+              error => console.log(error)
+            );
+        } 
+        this.initForm();
+      }
+    )
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   onSubmit(todo: Todo) {
-    this.todoService.createTodo(todo)
-      .subscribe(
-        todo => this.router.navigate(['/']),
-        error => console.log(error)
-      );
+    if (this.editMode) {
+      this.todoService.updateTodo(this.id, todo)
+        .subscribe(
+          todo => this.router.navigate(['/']),
+          error => console.log(error)
+        );
+    } else {
+      this.todoService.createTodo(todo)
+        .subscribe(
+          todo => this.router.navigate(['/']),
+          error => console.log(error)
+        );
+    }
   }
 
   private initForm() {

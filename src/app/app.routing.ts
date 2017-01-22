@@ -5,7 +5,8 @@ import { TodoFormComponent } from './todo-form/todo-form.component';
 
 const APP_ROUTES: Routes = [
   { path: '', component: TodoListComponent },
-  { path: 'todo', component: TodoFormComponent }
+  { path: 'todo', component: TodoFormComponent },
+  { path: 'todo/:id', component: TodoFormComponent }
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);

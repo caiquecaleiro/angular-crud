@@ -17,14 +17,20 @@ export class TodoService {
       .catch((error: any) => Observable.throw(error.json().error));
   }
 
+  fetchTodo(id) : Observable<Todo> {
+    return this.http.get(`${this.API_URL}/todos/${id}`)
+      .map((response: Response) => response.json().todo)
+      .catch((error: any) => Observable.throw(error.json().error));
+  }
+
   deleteTodo(todo: Todo) : Observable<Response> {
     return this.http.delete(`${this.API_URL}/todos/${todo._id}`)
       .map((response: Response) => response.json())
       .catch((error: any) => Observable.throw(error.json().error));
   }
 
-  updateTodo(todo: Todo) : Observable<Response> {
-    return this.http.patch(`${this.API_URL}/todos/${todo._id}`, todo)
+  updateTodo(id: number, todo: Todo) : Observable<Response> {
+    return this.http.patch(`${this.API_URL}/todos/${id}`, todo)
       .map((response: Response) => response.json())
       .catch((error: any) => Observable.throw(error.json().error));
   }
