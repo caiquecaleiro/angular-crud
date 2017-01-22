@@ -36,6 +36,13 @@
           <button type="submit" class="btn btn-primary">Save</button>
           <button type="button" class="btn btn-primary" [routerLink]="['/']">Cancel</button>
         </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <div *ngIf="error" class="margin-top-25px">
+            <ngb-alert type="danger">
+              <strong>Oops!</strong> {{error}}
+            </ngb-alert>
+          </div>
+        </div>
       </div>
     </form>
   </app-portlet>

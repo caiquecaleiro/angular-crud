@@ -15,6 +15,7 @@ export class TodoFormComponent implements OnInit, OnDestroy {
   private editMode: boolean = false;
   private id: number = null;
   private subscription: Subscription;
+  private error: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,7 +37,7 @@ export class TodoFormComponent implements OnInit, OnDestroy {
                 (<FormControl>this.todoForm.controls['text']).setValue(todo.text);
                 (<FormControl>this.todoForm.controls['completed']).setValue(todo.completed);
               },
-              error => console.log(error)
+              error => this.error = error
             );
         } 
         this.initForm();

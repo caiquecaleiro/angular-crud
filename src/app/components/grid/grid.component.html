@@ -18,5 +18,10 @@
         </tbody>
       </table>
     </div>
+    <div *ngIf="data.length === 0">
+      <ngb-alert type="info">
+        <strong>Heads up!</strong> There is no record available.
+      </ngb-alert>
+    </div>
   </div>
 </div>
