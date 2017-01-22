@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { TodoService } from '../shared/services/todo-service';
 import { Todo } from '../shared/interfaces/todo';
@@ -7,15 +8,17 @@ import { ColumnType } from '../shared/enum/columnType';
 
 @Component({
   selector: 'app-todo-list',
-  templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.css']
+  templateUrl: './todo-list.component.html'
 })
 export class TodoListComponent implements OnInit {
   todos: Todo[] = [];
   gridCells: Array<Cell> = [];
   selectedRow: Todo;
 
-  constructor(private todoService: TodoService) { }
+  constructor(
+    private todoService: TodoService,
+    private router: Router  
+  ) { }
 
   ngOnInit() {
     this.setGridCells();
@@ -44,7 +47,7 @@ export class TodoListComponent implements OnInit {
   }
 
   onNew() {
-    console.log('new');
+    this.router.navigate(['/todo']);
   }
 
   onEdit() {

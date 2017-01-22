@@ -1,0 +1,42 @@
+<app-page-container>
+  <app-portlet title="Todo">
+    <form novalidate [formGroup]="todoForm" (ngSubmit)="todoForm.valid && onSubmit(todoForm.value)">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6"> 
+          <div class="form-group required" [ngClass]="{'has-danger': todoForm.controls['text'].touched && !todoForm.controls['text'].valid}">
+            <label>Text</label>
+            <input
+              id="text"
+              type="text"
+              class="form-control"
+              formControlName="text"
+            />
+            <div *ngIf="todoForm.controls['text'].touched && !todoForm.controls['text'].valid" class="form-control-feedback">
+              Enter a text description
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6"> 
+          <div class="form-group">
+            <div class="margin-top-30px">
+              <label class="mt-checkbox mt-checkbox-outline">
+                <input 
+                  id="completed" 
+                  type="checkbox"
+                  class="form-control"
+                  formControlName="completed"
+                />
+                <label>Completed</label>
+                <span></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12"> 
+          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-primary" [routerLink]="['/']">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </app-portlet>
+</app-page-container>

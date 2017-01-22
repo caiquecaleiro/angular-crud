@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -11,6 +11,7 @@ import { PortletComponent } from './components/portlet/portlet.component';
 import { PageContainerComponent } from './components/page-container/page-container.component';
 import { TodoService } from './shared/services/todo-service';
 import { CrudButtonsComponent } from './components/crud-buttons/crud-buttons.component';
+import { TodoFormComponent } from './todo-form/todo-form.component';
 
 @NgModule({
   declarations: [
@@ -19,13 +20,15 @@ import { CrudButtonsComponent } from './components/crud-buttons/crud-buttons.com
     GridComponent,
     PortletComponent,
     PageContainerComponent,
-    CrudButtonsComponent
+    CrudButtonsComponent,
+    TodoFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    ReactiveFormsModule
   ],
   providers: [TodoService],
   bootstrap: [AppComponent]
